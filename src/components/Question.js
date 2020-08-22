@@ -12,15 +12,34 @@ class Question extends Component {
     const { name, avatar, optionOne, optionTwo } = question;
     return (
       <div className="question">
-        <img className="avatar" src={avatar} alt={`Avater of ${name}`} />
+        <header>{name} wants to know would you rather:</header>
         <div className="question-info">
-          <p>{name} asked:</p>
-          <p>Would You Rather...</p>
-          <input type="radio" id="option1" name="option" value="option1" />
-          <label for="option1">{optionOne.text}</label>
-          <input type="radio" id="option2" name="option" value="option2" />
-          <label for="option2">{optionTwo.text}</label>
-          <button>Submit</button>
+          <img className="avatar" src={avatar} alt={`Avater of ${name}`} />
+          <div className="question-options">
+            <div>
+              <input
+                type="radio"
+                id={`optionOne-${question.id}`}
+                name="option"
+                value={`optionOne-${question.id}`}
+              />
+              <label htmlFor={`optionOne-${question.id}`}>
+                {optionOne.text}
+              </label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id={`optionTwo-${question.id}`}
+                name="option"
+                value={`optionTwo-${question.id}`}
+              />
+              <label htmlFor={`optionTwo-${question.id}`}>
+                {optionTwo.text}
+              </label>
+            </div>
+            <button>Submit</button>
+          </div>
         </div>
       </div>
     );
