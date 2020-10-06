@@ -76,7 +76,7 @@ li {
 
 .question {
   width: 100%;
-  max-width: 50vw;
+  max-width: 500px;
   padding: 10px;
   margin: 0 auto;
   border: 1px solid #dad7d7;
@@ -95,12 +95,12 @@ li {
 .question-options {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   margin-left: 0.075em;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   margin: 0.75em 0.75em;
 }
 
