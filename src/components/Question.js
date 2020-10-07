@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { formatQuestion } from "../utils/helpers";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { formatQuestion } from '../utils/helpers';
+import { Link } from 'react-router-dom';
 
 class Question extends Component {
   render() {
@@ -9,18 +10,18 @@ class Question extends Component {
     if (question === null) {
       return <p>Question does not exist</p>;
     }
-    const { name, avatar, optionOne, optionTwo } = question;
+    const { name, avatar, optionOne, optionTwo, id } = question;
     return (
-      <div className="question">
+      <Link to={`/question/${id}`} className='question'>
         <header>{name} wants to know would you rather:</header>
-        <div className="question-info">
-          <img className="avatar" src={avatar} alt={`Avater of ${name}`} />
-          <div className="question-options">
+        <div className='question-info'>
+          <img className='avatar' src={avatar} alt={`Avater of ${name}`} />
+          <div className='question-options'>
             <div>
               <input
-                type="radio"
+                type='radio'
                 id={`optionOne-${question.id}`}
-                name="option"
+                name='option'
                 value={`optionOne-${question.id}`}
               />
               <label htmlFor={`optionOne-${question.id}`}>
@@ -29,9 +30,9 @@ class Question extends Component {
             </div>
             <div>
               <input
-                type="radio"
+                type='radio'
                 id={`optionTwo-${question.id}`}
-                name="option"
+                name='option'
                 value={`optionTwo-${question.id}`}
               />
               <label htmlFor={`optionTwo-${question.id}`}>
@@ -41,7 +42,7 @@ class Question extends Component {
             <button>Submit</button>
           </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }

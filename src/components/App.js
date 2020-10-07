@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
-import Header from './Header';
+import { Nav } from './Nav';
 import Dashboard from './Dashboard';
 import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage';
@@ -12,12 +13,18 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <Header />
-        {this.props.loading ? null : (
-          <QuestionPage match={{ params: { id: '6ni6ok3ym7mf1p33lnez' } }} />
-        )}
-      </div>
+      <Router>
+        <div>
+          <Nav />
+          {this.props.loading ? null : (
+            <div>
+              <Route path='/' exact component={Dashboard} />
+              <Route path='/question/:id' exact component={QuestionPage} />
+              <Route path='/new' exact component={NewQuestion} />
+            </div>
+          )}
+        </div>
+      </Router>
     );
   }
 }
