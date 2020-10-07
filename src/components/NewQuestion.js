@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { handleAddQuestion } from '../actions/questions';
 
 class NewQuestion extends Component {
   state = {
-    option1: '',
-    option2: '',
+    optionOneText: '',
+    optionTwoText: '',
   };
 
   handleChange = (evt) => {
@@ -19,9 +21,10 @@ class NewQuestion extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
 
-    const { option1, option2 } = this.state;
+    const { optionOneText, optionTwoText } = this.state;
+    const { dispatch } = this.props;
 
-    console.log('Question: ', option1, option2);
+    dispatch(handleAddQuestion(optionOneText, optionTwoText));
 
     this.setState(() => ({
       text: '',
@@ -29,7 +32,7 @@ class NewQuestion extends Component {
   };
 
   render() {
-    const { option1, option2 } = this.state;
+    const { optionOneText, optionTwoText } = this.state;
     return (
       <div>
         <h3>Create New Question</h3>
@@ -37,19 +40,22 @@ class NewQuestion extends Component {
         <h4>Would you rather...</h4>
         <form onSubmit={this.handleSubmit}>
           <input
-            name='option1'
+            name='optionOneText'
             placeholder='Enter Option 1 Here'
-            value={option1}
+            value={optionOneText}
             onChange={this.handleChange}
           />
           <p>OR</p>
           <input
-            name='option2'
+            name='optionTwoText'
             placeholder='Enter Option 2 Here'
-            value={option2}
+            value={optionTwoText}
             onChange={this.handleChange}
           />
-          <button type='submit' disabled={option1 === '' || option2 === ''}>
+          <button
+            type='submit'
+            disabled={optionOneText === '' || optionTwoText === ''}
+          >
             Submit
           </button>
         </form>
@@ -58,4 +64,4 @@ class NewQuestion extends Component {
   }
 }
 
-export default NewQuestion;
+export default connect()(NewQuestion);
