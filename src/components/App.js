@@ -15,17 +15,17 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <Fragment>
           <Nav />
           {this.props.loading ? null : (
-            <Login />
-            // <div>
-            //   <Route path='/' exact component={Dashboard} />
-            //   <Route path='/question/:id' exact component={QuestionPage} />
-            //   <Route path='/new' exact component={NewQuestion} />
-            // </div>
+            <div>
+              <Route path='/' exact component={Login} />
+              <Route path='/home' exact component={Dashboard} />
+              <Route path='/question/:id' exact component={QuestionPage} />
+              <Route path='/new' exact component={NewQuestion} />
+            </div>
           )}
-        </div>
+        </Fragment>
       </Router>
     );
   }

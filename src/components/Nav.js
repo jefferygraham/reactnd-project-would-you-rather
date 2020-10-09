@@ -8,7 +8,7 @@ export const Nav = () => {
         <nav>
           <ul>
             <li>
-              <NavLink exact to='/'>
+              <NavLink exact to='/home'>
                 Home
               </NavLink>
             </li>
