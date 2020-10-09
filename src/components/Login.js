@@ -40,7 +40,7 @@ class Login extends Component {
             onChange={this.handleChange}
             name='users'
             id='users'
-            form='userfrom'
+            form='userform'
           >
             <option>SELECT A USER</option>
             {Object.keys(this.props.users).map((user) => (
