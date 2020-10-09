@@ -26,7 +26,7 @@ class Nav extends Component {
                 </NavLink>
               </li>
             </ul>
-            {this.props.authedUser && (
+            {authedUser && (
               <div>
                 <p>Hello, {users[authedUser].name}</p>
                 <button>Logout</button>

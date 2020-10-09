@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Question from "./Question";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Question from './Question';
 
 class Dashboard extends Component {
   render() {
+    const { answeredQuestionIds } = this.props;
+
     return (
       <div>
-        <h3 className="center">Your Questions</h3>
-        <ul className="dashboard-list">
-          {this.props.questionIds.map((id) => (
+        <h3 className='center'>Your Questions</h3>
+        <ul className='dashboard-list'>
+          {answeredQuestionIds.map((id) => (
             <li key={id}>
               <Question id={id} />
             </li>
@@ -19,11 +21,17 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, authedUser }) {
   return {
-    questionIds: Object.keys(questions).sort(
-      (a, b) => questions[b].timestamp - questions[a].timestamp
-    ),
+    answeredQuestionIds: Object.keys(questions)
+      .filter(
+        (id) =>
+          questions[id].optionOne.votes.includes(authedUser) ||
+          questions[id].optionTwo.votes.includes(authedUser)
+      )
+      .sort((a, b) => questions[b].timestamp - questions[a].timestamp),
+    authedUser,
+    questions,
   };
 }
 
