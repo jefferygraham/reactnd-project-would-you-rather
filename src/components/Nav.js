@@ -1,40 +1,37 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
 
-class Nav extends Component {
+class Header extends Component {
   render() {
     const { authedUser, users } = this.props;
     return (
-      <div>
-        <header>
-          <nav>
-            <ul>
-              <li>
-                <NavLink exact to='/home'>
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink exact to='/new'>
-                  New Question
-                </NavLink>
-              </li>
-              <li>
-                <NavLink exact to='leaderboard'>
-                  Leaderboard
-                </NavLink>
-              </li>
-            </ul>
-            {authedUser && (
-              <div>
-                <p>Hello, {users[authedUser].name}</p>
-                <button>Logout</button>
-              </div>
-            )}
-          </nav>
-        </header>
-      </div>
+      <Navbar bg='light' expand='lg'>
+        <Navbar.Brand href='#home'>Would You Rather...</Navbar.Brand>
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='mr-auto'>
+            <Nav.Item>
+              <NavLink to='/home'>Home</NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink to='/add'>New Question</NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink to='/leaderboard'>Leaderboard</NavLink>
+            </Nav.Item>
+          </Nav>
+
+          {authedUser && (
+            <span inline>
+              Hello, {users[authedUser].name} <Button size='sm'>Logout</Button>
+            </span>
+          )}
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
@@ -46,4 +43,4 @@ function mapStateToProps({ authedUser, users }) {
   };
 }
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(Header);

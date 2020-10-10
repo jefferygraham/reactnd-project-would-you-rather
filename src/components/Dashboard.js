@@ -11,20 +11,19 @@ class Dashboard extends Component {
     return (
       <div>
         <h3 className='center'>Your Questions</h3>
-        <Tabs defaultActiveKey='answered'>
-          <Tab eventKey='answered' title='answered'>
-            {' '}
+        <Tabs defaultActiveKey='unanswered'>
+          <Tab eventKey='unanswered' title='unanswered'>
             <ul className='dashboard-list'>
-              {answeredQuestionIds.map((id) => (
+              {unAnsweredQuestionIds.map((id) => (
                 <li key={id}>
                   <Question id={id} />
                 </li>
               ))}
             </ul>
           </Tab>
-          <Tab eventKey='unanswered' title='unanswered'>
+          <Tab eventKey='answered' title='answered'>
             <ul className='dashboard-list'>
-              {unAnsweredQuestionIds.map((id) => (
+              {answeredQuestionIds.map((id) => (
                 <li key={id}>
                   <Question id={id} />
                 </li>

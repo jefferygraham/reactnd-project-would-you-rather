@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
-import Nav from './Nav';
+import Header from './Nav';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import NewQuestion from './NewQuestion';
@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <Nav />
+          <Header />
           <div>
             <Route path='/' exact component={Login} />
             <Route path='/home' exact component={Dashboard} />

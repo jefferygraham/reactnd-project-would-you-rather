@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
 import { Link } from 'react-router-dom';
@@ -9,39 +9,20 @@ class Question extends Component {
     if (question === null) {
       return <p>Question does not exist</p>;
     }
-    const { name, avatar, optionOne, optionTwo, id } = question;
+    const { name, avatar, optionOne, id } = question;
     return (
-      <Link to={`/question/${id}`} className='question'>
+      <Fragment>
         <header>{name} wants to know would you rather:</header>
         <div className='question-info'>
           <img className='avatar' src={avatar} alt={`Avater of ${name}`} />
           <div className='question-options'>
-            <div>
-              <input
-                type='radio'
-                id={`optionOne-${question.id}`}
-                name='option'
-                value={`optionOne-${question.id}`}
-              />
-              <label htmlFor={`optionOne-${question.id}`}>
-                {optionOne.text}
-              </label>
-            </div>
-            <div>
-              <input
-                type='radio'
-                id={`optionTwo-${question.id}`}
-                name='option'
-                value={`optionTwo-${question.id}`}
-              />
-              <label htmlFor={`optionTwo-${question.id}`}>
-                {optionTwo.text}
-              </label>
-            </div>
-            <button>Submit</button>
+            <p>{optionOne.text} or .....</p>
+            <Link to={`/question/${id}`} className='question'>
+              View Poll
+            </Link>
           </div>
         </div>
-      </Link>
+      </Fragment>
     );
   }
 }
