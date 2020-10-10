@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
+import Container from 'react-bootstrap/Container';
 import Question from './Question';
 
 class Dashboard extends Component {
@@ -9,8 +10,7 @@ class Dashboard extends Component {
     const { answeredQuestionIds, unAnsweredQuestionIds } = this.props;
 
     return (
-      <div>
-        <h3 className='center'>Your Questions</h3>
+      <Container className='my-3'>
         <Tabs defaultActiveKey='unanswered'>
           <Tab eventKey='unanswered' title='unanswered'>
             <ul className='dashboard-list'>
@@ -31,7 +31,7 @@ class Dashboard extends Component {
             </ul>
           </Tab>
         </Tabs>
-      </div>
+      </Container>
     );
   }
 }
