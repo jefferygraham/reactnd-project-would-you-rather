@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { setAuthedUser } from '../actions/authedUser';
 import { connect } from 'react-redux';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 
 class Login extends Component {
   state = {
@@ -33,25 +37,39 @@ class Login extends Component {
       return <Redirect to='/home' />;
     }
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor='users'>Choose a user:</label>
-          <select
-            onChange={this.handleChange}
-            name='users'
-            id='users'
-            form='userform'
-          >
-            <option>SELECT A USER</option>
-            {Object.keys(this.props.users).map((user) => (
-              <option value={this.props.users[user].id} key={user}>
-                {this.props.users[user].name}
-              </option>
-            ))}
-          </select>
-          <button type='submit'>Sign In</button>
-        </form>
-      </div>
+      <Container className='d-flex justify-content-center align-items-center'>
+        <Card className='text-center' style={{ width: '36rem' }}>
+          <Card.Header>
+            <h3>Welcome to the Would You Rather App!</h3>
+            <p>Please sign in to continue.</p>
+          </Card.Header>
+          <Card.Img variant='top' src='/assets/images/would-you-rather.jpg' />
+          <Card.Body>
+            <Card.Title>Sign In</Card.Title>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Group>
+                <Form.Control
+                  as='select'
+                  onChange={this.handleChange}
+                  name='users'
+                  id='users'
+                  form='userform'
+                >
+                  <option>SELECT A USER</option>
+                  {Object.keys(this.props.users).map((user) => (
+                    <option value={this.props.users[user].id} key={user}>
+                      {this.props.users[user].name}
+                    </option>
+                  ))}
+                </Form.Control>
+              </Form.Group>
+              <Button type='submit' block>
+                Sign In
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Container>
     );
   }
 }
