@@ -12,7 +12,7 @@ class Dashboard extends Component {
     return (
       <Container className='my-3'>
         <Tabs defaultActiveKey='unanswered'>
-          <Tab eventKey='unanswered' title='unanswered'>
+          <Tab eventKey='unanswered' title='Unanswered Questions'>
             <ul className='dashboard-list'>
               {unAnsweredQuestionIds.map((id) => (
                 <li key={id}>
@@ -21,7 +21,7 @@ class Dashboard extends Component {
               ))}
             </ul>
           </Tab>
-          <Tab eventKey='answered' title='answered'>
+          <Tab eventKey='answered' title='Answered Questions'>
             <ul className='dashboard-list'>
               {answeredQuestionIds.map((id) => (
                 <li key={id}>
