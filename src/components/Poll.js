@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -35,36 +37,44 @@ class Poll extends Component {
     const { name, avatar, optionOne, optionTwo } = question;
     if (question) {
       return (
-        <Card>
-          <Card.Header>{question.name} asks...</Card.Header>
-          <Card.Body className='d-flex'>
-            <img className='avatar' src={avatar} alt={`Avater of ${name}`} />
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Group>
-                <Form.Label>Would You Rather...</Form.Label>
-                <Form.Check
-                  onChange={this.handleChange}
-                  type='radio'
-                  label={optionOne.text}
-                  name='pollChoice'
-                  id='optionOne'
-                  value='optionOne'
+        <Container>
+          <Row className='my-3 d-flex justify-content-center'>
+            <Card>
+              <Card.Header>{question.name} asks...</Card.Header>
+              <Card.Body className='d-flex'>
+                <img
+                  className='avatar'
+                  src={avatar}
+                  alt={`Avater of ${name}`}
                 />
-                <Form.Check
-                  onChange={this.handleChange}
-                  type='radio'
-                  label={optionTwo.text}
-                  name='pollChoice'
-                  id='optionTwo'
-                  value='optionTwo'
-                />
-              </Form.Group>
-              <Button type='submit' block>
-                Submit
-              </Button>
-            </Form>
-          </Card.Body>
-        </Card>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Group>
+                    <Form.Label>Would You Rather...</Form.Label>
+                    <Form.Check
+                      onChange={this.handleChange}
+                      type='radio'
+                      label={optionOne.text}
+                      name='pollChoice'
+                      id='optionOne'
+                      value='optionOne'
+                    />
+                    <Form.Check
+                      onChange={this.handleChange}
+                      type='radio'
+                      label={optionTwo.text}
+                      name='pollChoice'
+                      id='optionTwo'
+                      value='optionTwo'
+                    />
+                  </Form.Group>
+                  <Button type='submit' block>
+                    Submit
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Row>
+        </Container>
       );
     }
   }

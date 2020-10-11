@@ -10,7 +10,6 @@ class QuestionPage extends Component {
     const { id, answered } = this.props;
 
     if (answered.includes(id)) {
-      console.log(answered);
       return (
         <Container>
           <Row className='d-flex justify-content-center'>
