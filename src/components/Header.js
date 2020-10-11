@@ -26,7 +26,7 @@ class Header extends Component {
           </Nav>
 
           {authedUser && (
-            <span inline>
+            <span>
               Hello, {users[authedUser].name} <Button size='sm'>Logout</Button>
             </span>
           )}
