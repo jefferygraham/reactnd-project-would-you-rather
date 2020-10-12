@@ -9,6 +9,7 @@ import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage';
 import Poll from './Poll';
 import PollResults from './PollResults';
+import Leaderboard from './Leaderboard';
 
 class App extends Component {
   componentDidMount() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path='/add' exact component={NewQuestion} />
             <Route path='/poll/:id' exact component={Poll} />
             <Route path='/pollresults/:id' exact component={PollResults} />
+            <Route path='/leaderboard' exact component={Leaderboard} />
           </div>
         </Fragment>
       </Router>
