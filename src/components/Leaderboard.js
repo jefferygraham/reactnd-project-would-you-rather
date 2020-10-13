@@ -6,46 +6,54 @@ import { connect } from 'react-redux';
 
 class Leaderboard extends Component {
   render() {
-    const { authedUser, questions, users, userIdList } = this.props;
+    const { users, userInfo } = this.props;
     return (
       <Container>
-        {userIdList.map((user) => (
-          <Row
-            key={user}
-            className='d-flex justify-content-center text-center mt-3'
-          >
-            <Card>
-              <Card.Body className='d-flex'>
-                <img
-                  className='avatar'
-                  src={users[user].avatarURL}
-                  alt={`Avatar of ${users[user].name}`}
-                />
-                <div className='d-flex flex-column'>
-                  <h2>{users[user].name}</h2>
-                  <p>Answered questions</p>
-                  <p>Created questions</p>
-                </div>
-                <div>
-                  <h2>Score</h2>
-                  <p>#</p>
-                </div>
-              </Card.Body>
-            </Card>
-          </Row>
-        ))}
+        {userInfo
+          .sort((a, b) => b.totalScore - a.totalScore)
+          .map((user) => (
+            <Row
+              key={user.user}
+              className='d-flex justify-content-center text-center mt-3'
+            >
+              <Card>
+                <Card.Body className='d-flex'>
+                  <img
+                    className='avatar'
+                    src={users[user.user].avatarURL}
+                    alt={`Avatar of ${users[user.user].name}`}
+                  />
+                  <div className='d-flex flex-column'>
+                    <h2>{users[user.user].name}</h2>
+                    <p>Answered questions: {user.answers}</p>
+                    <p>Created questions: {user.questions}</p>
+                  </div>
+                  <div>
+                    <h2>Score</h2>
+                    <p>{user.totalScore}</p>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Row>
+          ))}
       </Container>
     );
   }
 }
 
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ authedUser, users }) {
+  const userInfo = Object.keys(users).map((user) => ({
+    user: user,
+    answers: Object.keys(users[user].answers).length,
+    questions: users[user].questions.length,
+    totalScore:
+      Object.keys(users[user].answers).length + users[user].questions.length,
+  }));
+
   return {
     authedUser,
     users,
-    questions,
-    userIdList: Object.keys(users),
-    questionIdList: Object.keys(questions),
+    userInfo,
   };
 }
 
