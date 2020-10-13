@@ -6,11 +6,10 @@ import { connect } from 'react-redux';
 
 class Leaderboard extends Component {
   render() {
-    const { authedUser, questions, users, userList } = this.props;
-    console.log(userList);
+    const { authedUser, questions, users, userIdList } = this.props;
     return (
       <Container>
-        {userList.map((user) => (
+        {userIdList.map((user) => (
           <Row
             key={user}
             className='d-flex justify-content-center text-center mt-3'
@@ -45,7 +44,8 @@ function mapStateToProps({ authedUser, users, questions }) {
     authedUser,
     users,
     questions,
-    userList: Object.keys(users),
+    userIdList: Object.keys(users),
+    questionIdList: Object.keys(questions),
   };
 }
 

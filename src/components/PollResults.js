@@ -35,22 +35,23 @@ class PollResults extends Component {
                   <h3>Results:</h3>
                   <div>
                     <p>{optionOne.text}</p>
+                    <ProgressBar
+                      now={optionOnePercentage}
+                      label={`${optionOnePercentage.toFixed(2)}%`}
+                    />{' '}
                     <p>
-                      <ProgressBar
-                        now={optionOnePercentage}
-                        label={`${optionOnePercentage.toFixed(2)}%`}
-                      />
                       {optionOneVotes} out of {optionOneVotes + optionTwoVotes}{' '}
                       votes
                     </p>
                   </div>
                   <div>
                     <p>{optionTwo.text}</p>
+
+                    <ProgressBar
+                      now={optionTwoPercentage}
+                      label={`${optionTwoPercentage.toFixed(2)}%`}
+                    />
                     <p>
-                      <ProgressBar
-                        now={optionTwoPercentage}
-                        label={`${optionTwoPercentage.toFixed(2)}%`}
-                      />
                       {optionTwoVotes} out of {optionOneVotes + optionTwoVotes}{' '}
                       votes
                     </p>
