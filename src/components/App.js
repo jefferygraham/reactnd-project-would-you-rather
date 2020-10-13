@@ -22,7 +22,7 @@ class App extends Component {
           <Header />
           <div>
             {/* <Route path='/' exact component={Login} /> */}
-            <Route path='/home' exact component={Dashboard} />
+            <Route path='/' exact component={Dashboard} />
             <Route path='/question/:id' exact component={QuestionPage} />
             <Route path='/add' exact component={NewQuestion} />
             <Route path='/poll/:id' exact component={Poll} />

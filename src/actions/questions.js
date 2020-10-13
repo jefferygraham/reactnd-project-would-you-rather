@@ -1,6 +1,6 @@
 import { saveQuestion } from '../utils/api';
 import { saveQuestionAnswer } from '../utils/api';
-import { addAnswerToUser } from './users';
+import { addAnswerToUser, addQuestionToUser } from './users';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
@@ -36,7 +36,9 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
       optionOneText,
       optionTwoText,
       author,
-    }).then((question) => dispatch(addQuestion(question)));
+    })
+      .then((question) => dispatch(addQuestion(question)))
+      .then((question) => dispatch(addQuestionToUser(question)));
   };
 }
 
