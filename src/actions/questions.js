@@ -1,5 +1,6 @@
 import { saveQuestion } from '../utils/api';
 import { saveQuestionAnswer } from '../utils/api';
+import { addAnswerToUser } from './users';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
@@ -21,9 +22,9 @@ function addQuestionAnswer({ authedUser, qid, answer }) {
 
 export function handleSaveQuestionAnswer(authedUser, qid, answer) {
   return (dispatch) => {
-    return saveQuestionAnswer({ authedUser, qid, answer }).then(() =>
-      dispatch(addQuestionAnswer({ authedUser, qid, answer }))
-    );
+    return saveQuestionAnswer({ authedUser, qid, answer })
+      .then(() => dispatch(addQuestionAnswer({ authedUser, qid, answer })))
+      .then(() => dispatch(addAnswerToUser(authedUser, qid, answer)));
   };
 }
 

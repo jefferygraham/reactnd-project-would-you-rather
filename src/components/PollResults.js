@@ -46,7 +46,6 @@ class PollResults extends Component {
                   </div>
                   <div>
                     <p>{optionTwo.text}</p>
-
                     <ProgressBar
                       now={optionTwoPercentage}
                       label={`${optionTwoPercentage.toFixed(2)}%`}
