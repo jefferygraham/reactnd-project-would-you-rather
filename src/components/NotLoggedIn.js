@@ -6,13 +6,13 @@ class NotLoggedIn extends Component {
   render() {
     return (
       <Alert variant='danger'>
-        <Alert.Heading>Unauthorized Access</Alert.Heading>
+        <Alert.Heading>Error 401 - Unauthorized</Alert.Heading>
         <p>
           You must be logged in to see this page. Please{' '}
-          <Link exact to='/'>
+          <Link className='alert-link' exact to='/'>
             log in
           </Link>{' '}
-          to continue
+          to continue.
         </p>
       </Alert>
     );

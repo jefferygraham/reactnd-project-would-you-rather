@@ -7,8 +7,6 @@ import Login from './Login';
 import Dashboard from './Dashboard';
 import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage';
-import Poll from './Poll';
-import PollResults from './PollResults';
 import Leaderboard from './Leaderboard';
 import NotLoggedIn from './NotLoggedIn';
 
@@ -27,7 +25,17 @@ class App extends Component {
               exact
               render={() => (this.props.authedUser ? <Dashboard /> : <Login />)}
             />
-            <Route path='/question/:id' exact component={QuestionPage} />
+            <Route
+              path='/question/:id'
+              exact
+              render={(props) =>
+                this.props.authedUser ? (
+                  <QuestionPage {...props} />
+                ) : (
+                  <NotLoggedIn />
+                )
+              }
+            />
             <Route
               path='/add'
               exact
@@ -35,8 +43,6 @@ class App extends Component {
                 this.props.authedUser ? <NewQuestion /> : <NotLoggedIn />
               }
             />
-            <Route path='/poll/:id' exact component={Poll} />
-            <Route path='/pollresults/:id' exact component={PollResults} />
             <Route
               path='/leaderboard'
               exact
