@@ -22,16 +22,16 @@ class PollResults extends Component {
       const optionTwoPercentage = (optionTwoVotes / totalVotes) * 100;
       return (
         <Container>
-          <Row className='my-3 d-flex justify-content-center'>
+          <Row className='my-4 d-flex justify-content-center'>
             <Card>
               <Card.Header>{name} asks:</Card.Header>
               <Card.Body className='d-flex'>
                 <img
-                  className='avatar'
+                  className='avatar align-self-center border'
                   src={avatar}
                   alt={`Avatar of ${name}`}
                 />
-                <div>
+                <div className='ml-5 d-flex flex-column justify-content-center'>
                   <h3>Results:</h3>
                   <div>
                     <p>{optionOne.text}</p>

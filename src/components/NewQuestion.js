@@ -48,7 +48,7 @@ class NewQuestion extends Component {
     }
 
     return (
-      <Container className='my-3'>
+      <Container className='my-4'>
         <Row className='d-flex justify-content-center'>
           <Card id='new-question'>
             <Card.Header className='text-center'>

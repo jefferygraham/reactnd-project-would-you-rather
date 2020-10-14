@@ -17,9 +17,9 @@ class Leaderboard extends Component {
               className='d-flex justify-content-center text-center mt-3'
             >
               <Card>
-                <Card.Body className='d-flex'>
+                <Card.Body className='d-flex align-items-center justify-content-between'>
                   <img
-                    className='avatar'
+                    className='avatar border'
                     src={users[user.user].avatarURL}
                     alt={`Avatar of ${users[user.user].name}`}
                   />
@@ -29,7 +29,7 @@ class Leaderboard extends Component {
                     <p>Created questions: {user.questions}</p>
                   </div>
                   <div>
-                    <h2>Score</h2>
+                    <h3>Score</h3>
                     <p>{user.totalScore}</p>
                   </div>
                 </Card.Body>

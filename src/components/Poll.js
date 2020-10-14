@@ -43,11 +43,11 @@ class Poll extends Component {
               <Card.Header>{question.name} asks...</Card.Header>
               <Card.Body className='d-flex'>
                 <img
-                  className='avatar'
+                  className='avatar border align-self-center'
                   src={avatar}
                   alt={`Avater of ${name}`}
                 />
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit} className='ml-5'>
                   <Form.Group>
                     <Form.Label>Would You Rather...</Form.Label>
                     <Form.Check
