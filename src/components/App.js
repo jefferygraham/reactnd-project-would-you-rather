@@ -10,6 +10,7 @@ import QuestionPage from './QuestionPage';
 import Poll from './Poll';
 import PollResults from './PollResults';
 import Leaderboard from './Leaderboard';
+import NotLoggedIn from './NotLoggedIn';
 
 class App extends Component {
   componentDidMount() {
@@ -24,15 +25,25 @@ class App extends Component {
             <Route
               path='/'
               exact
-              render={(props) =>
-                this.props.authedUser ? <Dashboard /> : <Login />
-              }
+              render={() => (this.props.authedUser ? <Dashboard /> : <Login />)}
             />
             <Route path='/question/:id' exact component={QuestionPage} />
-            <Route path='/add' exact component={NewQuestion} />
+            <Route
+              path='/add'
+              exact
+              render={() =>
+                this.props.authedUser ? <NewQuestion /> : <NotLoggedIn />
+              }
+            />
             <Route path='/poll/:id' exact component={Poll} />
             <Route path='/pollresults/:id' exact component={PollResults} />
-            <Route path='/leaderboard' exact component={Leaderboard} />
+            <Route
+              path='/leaderboard'
+              exact
+              render={() =>
+                this.props.authedUser ? <Leaderboard /> : <NotLoggedIn />
+              }
+            />
           </div>
         </Fragment>
       </Router>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -11,6 +11,8 @@ class Header extends Component {
     const { dispatch } = this.props;
 
     dispatch(setAuthedUser(null));
+
+    this.props.history.push('/');
   };
 
   render() {
@@ -53,4 +55,4 @@ function mapStateToProps({ authedUser, users }) {
   };
 }
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));
