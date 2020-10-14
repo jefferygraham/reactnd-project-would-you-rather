@@ -29,13 +29,7 @@ class App extends Component {
                 this.props.authedUser ? <Dashboard /> : <Login />
               }
             />
-            <Route
-              path='/question/:id'
-              exact
-              render={(props) =>
-                this.props.authedUser ? <QuestionPage /> : <NotLoggedin />
-              }
-            />
+            <Route path='/question/:id' exact component={QuestionPage} />
             <Route
               path='/add'
               exact
@@ -43,20 +37,8 @@ class App extends Component {
                 this.props.authedUser ? <NewQuestion /> : <NotLoggedin />
               }
             />
-            <Route
-              path='/poll/:id'
-              exact
-              render={(props) =>
-                this.props.authedUser ? <Poll /> : <NotLoggedin />
-              }
-            />
-            <Route
-              path='/pollresults/:id'
-              exact
-              render={(props) =>
-                this.props.authedUser ? <PollResults /> : <NotLoggedin />
-              }
-            />
+            <Route path='/poll/:id' exact component={Poll} />
+            <Route path='/pollresults/:id' exact component={PollResults} />
             <Route
               path='/leaderboard'
               exact
