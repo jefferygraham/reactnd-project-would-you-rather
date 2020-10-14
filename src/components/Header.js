@@ -4,8 +4,15 @@ import { connect } from 'react-redux';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
+import { setAuthedUser } from '../actions/authedUser';
 
 class Header extends Component {
+  handleClick = () => {
+    const { dispatch } = this.props;
+
+    dispatch(setAuthedUser(null));
+  };
+
   render() {
     const { authedUser, users } = this.props;
     return (
@@ -15,7 +22,7 @@ class Header extends Component {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
             <Nav.Item>
-              <NavLink to='/home'>Home</NavLink>
+              <NavLink to='/'>Home</NavLink>
             </Nav.Item>
             <Nav.Item>
               <NavLink to='/add'>New Question</NavLink>
@@ -27,7 +34,10 @@ class Header extends Component {
 
           {authedUser && (
             <span>
-              Hello, {users[authedUser].name} <Button size='sm'>Logout</Button>
+              Hello, {users[authedUser].name}{' '}
+              <Button type='submit' onClick={this.handleClick} size='sm'>
+                Logout
+              </Button>
             </span>
           )}
         </Navbar.Collapse>

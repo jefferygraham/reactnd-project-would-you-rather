@@ -9,7 +9,6 @@ import Form from 'react-bootstrap/Form';
 
 class Login extends Component {
   state = {
-    toDashboard: false,
     chosenUser: null,
   };
 
@@ -26,16 +25,9 @@ class Login extends Component {
     const { dispatch } = this.props;
 
     dispatch(setAuthedUser(this.state.chosenUser));
-
-    this.setState(() => ({
-      toDashboard: true,
-    }));
   };
 
   render() {
-    if (this.state.toDashboard) {
-      return <Redirect to='/home' />;
-    }
     return (
       <Container className='d-flex justify-content-center align-items-center'>
         <Card className='text-center' style={{ width: '36rem' }}>
