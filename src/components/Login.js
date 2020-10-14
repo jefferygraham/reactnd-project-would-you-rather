@@ -31,7 +31,7 @@ class Login extends Component {
     return (
       <Container className='d-flex justify-content-center align-items-center'>
         <Row className='my-4'>
-          <Card className='text-center' style={{ width: '36rem' }}>
+          <Card className='text-center shadow' style={{ width: '36rem' }}>
             <Card.Header>
               <h3>Welcome to the Would You Rather App!</h3>
               <p>Please sign in to continue.</p>

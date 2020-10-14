@@ -9,7 +9,7 @@ class NotLoggedIn extends Component {
         <Alert.Heading>Error 401 - Unauthorized</Alert.Heading>
         <p>
           You must be logged in to see this page. Please{' '}
-          <Link className='alert-link' exact to='/'>
+          <Link className='alert-link' to='/'>
             log in
           </Link>{' '}
           to continue.

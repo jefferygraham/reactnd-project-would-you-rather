@@ -16,7 +16,7 @@ class Leaderboard extends Component {
               key={user.user}
               className='d-flex justify-content-center text-center mt-3'
             >
-              <Card>
+              <Card className='shadow'>
                 <Card.Body className='d-flex align-items-center justify-content-between'>
                   <img
                     className='avatar border'

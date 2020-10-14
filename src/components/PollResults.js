@@ -4,12 +4,14 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { formatQuestion } from '../utils/helpers';
 
 class PollResults extends Component {
   render() {
-    const { question } = this.props;
+    const { question, users, authedUser, id } = this.props;
     if (question === null) {
       return <p>Question does not exist</p>;
     }
@@ -23,7 +25,7 @@ class PollResults extends Component {
       return (
         <Container>
           <Row className='my-4 d-flex justify-content-center'>
-            <Card>
+            <Card className='shadow'>
               <Card.Header>{name} asks:</Card.Header>
               <Card.Body className='d-flex'>
                 <img
@@ -34,18 +36,28 @@ class PollResults extends Component {
                 <div className='ml-5 d-flex flex-column justify-content-center'>
                   <h3>Results:</h3>
                   <div>
-                    <p>{optionOne.text}</p>
+                    <p>
+                      {optionOne.text}{' '}
+                      {users[authedUser].answers[id] === 'optionOne' ? (
+                        <FontAwesomeIcon icon={faCheckCircle} />
+                      ) : null}
+                    </p>
                     <ProgressBar
                       now={optionOnePercentage}
                       label={`${optionOnePercentage.toFixed(2)}%`}
-                    />{' '}
+                    />
                     <p>
                       {optionOneVotes} out of {optionOneVotes + optionTwoVotes}{' '}
                       votes
                     </p>
                   </div>
                   <div>
-                    <p>{optionTwo.text}</p>
+                    <p>
+                      {optionTwo.text}{' '}
+                      {users[authedUser].answers[id] === 'optionTwo' ? (
+                        <FontAwesomeIcon icon={faCheckCircle} />
+                      ) : null}
+                    </p>
                     <ProgressBar
                       now={optionTwoPercentage}
                       label={`${optionTwoPercentage.toFixed(2)}%`}
@@ -73,6 +85,8 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
     question: question
       ? formatQuestion(question, users[question.author], authedUser)
       : null,
+    users,
+    id,
   };
 }
 

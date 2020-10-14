@@ -39,7 +39,7 @@ class Poll extends Component {
       return (
         <Container>
           <Row className='my-3 d-flex justify-content-center'>
-            <Card>
+            <Card className='shadow'>
               <Card.Header>{question.name} asks...</Card.Header>
               <Card.Body className='d-flex'>
                 <img

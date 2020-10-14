@@ -50,7 +50,7 @@ class NewQuestion extends Component {
     return (
       <Container className='my-4'>
         <Row className='d-flex justify-content-center'>
-          <Card id='new-question'>
+          <Card className='shadow'>
             <Card.Header className='text-center'>
               Create New Question
             </Card.Header>

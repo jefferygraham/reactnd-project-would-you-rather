@@ -12,7 +12,7 @@ class Question extends Component {
     }
     const { name, avatar, optionOne, id } = question;
     return (
-      <Card className='my-4'>
+      <Card className='my-4 shadow'>
         <Card.Header className='lead'>
           {name} wants to know would you rather
         </Card.Header>
