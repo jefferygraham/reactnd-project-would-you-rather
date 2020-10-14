@@ -16,7 +16,7 @@ class Header extends Component {
   render() {
     const { authedUser, users } = this.props;
     return (
-      <Navbar bg='light' expand='lg'>
+      <Navbar bg='light' expand='lg' className='p-4'>
         <Navbar.Brand href='#home'>Would You Rather...</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
@@ -35,7 +35,7 @@ class Header extends Component {
           {authedUser && (
             <span>
               Hello, {users[authedUser].name}{' '}
-              <Button type='submit' onClick={this.handleClick} size='sm'>
+              <Button className='mx-3' type='submit' onClick={this.handleClick}>
                 Logout
               </Button>
             </span>

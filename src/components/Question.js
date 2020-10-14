@@ -12,13 +12,22 @@ class Question extends Component {
     }
     const { name, avatar, optionOne, id } = question;
     return (
-      <Card className='my-3'>
-        <Card.Header>{name} wants to know would you rather</Card.Header>
+      <Card className='my-4'>
+        <Card.Header className='lead'>
+          {name} wants to know would you rather
+        </Card.Header>
         <Card.Body className='d-flex'>
-          <img className='avatar' src={avatar} alt={`Avater of ${name}`} />
-          <div className='question-options'>
+          <img
+            className='avatar border'
+            src={avatar}
+            alt={`Avater of ${name}`}
+          />
+          <div className='ml-5 d-flex flex-column justify-content-center'>
             <p>{optionOne.text} or .....</p>
-            <Link to={`/question/${id}`} className='question'>
+            <Link
+              to={`/question/${id}`}
+              className='btn btn-primary align-self-start'
+            >
               View Poll
             </Link>
           </div>
