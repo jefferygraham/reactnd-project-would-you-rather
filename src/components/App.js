@@ -10,6 +10,7 @@ import QuestionPage from './QuestionPage';
 import Poll from './Poll';
 import PollResults from './PollResults';
 import Leaderboard from './Leaderboard';
+import NotLoggedin from './NotLoggedIn';
 
 class App extends Component {
   componentDidMount() {
@@ -21,7 +22,6 @@ class App extends Component {
         <Fragment>
           <Header />
           <div>
-            {/* <Route path='/' exact component={Login} /> */}
             <Route
               path='/'
               exact
@@ -29,11 +29,41 @@ class App extends Component {
                 this.props.authedUser ? <Dashboard /> : <Login />
               }
             />
-            <Route path='/question/:id' exact component={QuestionPage} />
-            <Route path='/add' exact component={NewQuestion} />
-            <Route path='/poll/:id' exact component={Poll} />
-            <Route path='/pollresults/:id' exact component={PollResults} />
-            <Route path='/leaderboard' exact component={Leaderboard} />
+            <Route
+              path='/question/:id'
+              exact
+              render={(props) =>
+                this.props.authedUser ? <QuestionPage /> : <NotLoggedin />
+              }
+            />
+            <Route
+              path='/add'
+              exact
+              render={(props) =>
+                this.props.authedUser ? <NewQuestion /> : <NotLoggedin />
+              }
+            />
+            <Route
+              path='/poll/:id'
+              exact
+              render={(props) =>
+                this.props.authedUser ? <Poll /> : <NotLoggedin />
+              }
+            />
+            <Route
+              path='/pollresults/:id'
+              exact
+              render={(props) =>
+                this.props.authedUser ? <PollResults /> : <NotLoggedin />
+              }
+            />
+            <Route
+              path='/leaderboard'
+              exact
+              render={(props) =>
+                this.props.authedUser ? <Leaderboard /> : <NotLoggedin />
+              }
+            />
           </div>
         </Fragment>
       </Router>
