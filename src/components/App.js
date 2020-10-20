@@ -26,7 +26,7 @@ class App extends Component {
             render={() => (this.props.authedUser ? <Dashboard /> : <Login />)}
           />
           <Route path='/login' exact component={NotLoggedIn} />
-          <PrivateRoute path='/question/:id' exact component={QuestionPage} />
+          <PrivateRoute path='/questions/:id' exact component={QuestionPage} />
           <PrivateRoute path='/add' exact component={NewQuestion} />
           <PrivateRoute path='/leaderboard' exact component={Leaderboard} />
         </Fragment>

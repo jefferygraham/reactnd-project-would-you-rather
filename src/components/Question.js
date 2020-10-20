@@ -2,13 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
 import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
+import Alert from 'react-bootstrap/Alert';
 
 class Question extends Component {
   render() {
     const question = this.props.question;
     if (question === null) {
-      return <p>Question does not exist</p>;
+      return (
+        <Container>
+          <Row className='my-4'>
+            <Alert variant='danger' className='shadow'>
+              <p>Question does not exist!</p>
+            </Alert>
+          </Row>
+        </Container>
+      );
     }
     const { name, avatar, optionOne, id } = question;
     return (
@@ -25,7 +36,7 @@ class Question extends Component {
           <div className='ml-5 d-flex flex-column justify-content-center'>
             <p>{optionOne.text} or .....</p>
             <Link
-              to={`/question/${id}`}
+              to={`/questions/${id}`}
               className='btn btn-primary align-self-start'
             >
               View Poll

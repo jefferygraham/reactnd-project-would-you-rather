@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 import { formatQuestion } from '../utils/helpers';
 import { handleSaveQuestionAnswer } from '../actions/questions';
@@ -32,7 +33,15 @@ class Poll extends Component {
   render() {
     const { question } = this.props;
     if (question === null) {
-      return <p>Question does not exist</p>;
+      return (
+        <Container className='d-flex justify-content-center align-items-center'>
+          <Row className='my-4'>
+            <Alert variant='danger' className='shadow'>
+              <p>Question does not exist!</p>
+            </Alert>
+          </Row>
+        </Container>
+      );
     }
     const { name, avatar, optionOne, optionTwo } = question;
     if (question) {
