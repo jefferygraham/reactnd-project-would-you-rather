@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { setAuthedUser } from '../actions/authedUser';
 import { connect } from 'react-redux';
+
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';

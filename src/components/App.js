@@ -8,6 +8,7 @@ import Dashboard from './Dashboard';
 import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage';
 import Leaderboard from './Leaderboard';
+import PrivateRoute from './PrivateRoute';
 import NotLoggedIn from './NotLoggedIn';
 
 class App extends Component {
@@ -19,38 +20,15 @@ class App extends Component {
       <Router>
         <Fragment>
           <Header />
-          <div>
-            <Route
-              path='/'
-              exact
-              render={() => (this.props.authedUser ? <Dashboard /> : <Login />)}
-            />
-            <Route
-              path='/question/:id'
-              exact
-              render={(props) =>
-                this.props.authedUser ? (
-                  <QuestionPage {...props} />
-                ) : (
-                  <NotLoggedIn />
-                )
-              }
-            />
-            <Route
-              path='/add'
-              exact
-              render={() =>
-                this.props.authedUser ? <NewQuestion /> : <NotLoggedIn />
-              }
-            />
-            <Route
-              path='/leaderboard'
-              exact
-              render={() =>
-                this.props.authedUser ? <Leaderboard /> : <NotLoggedIn />
-              }
-            />
-          </div>
+          <Route
+            path='/'
+            exact
+            render={() => (this.props.authedUser ? <Dashboard /> : <Login />)}
+          />
+          <Route path='/login' exact component={NotLoggedIn} />
+          <PrivateRoute path='/question/:id' exact component={QuestionPage} />
+          <PrivateRoute path='/add' exact component={NewQuestion} />
+          <PrivateRoute path='/leaderboard' exact component={Leaderboard} />
         </Fragment>
       </Router>
     );
