@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class NewQuestion extends Component {
   state = {
@@ -48,45 +49,47 @@ class NewQuestion extends Component {
     }
 
     return (
-      <Container className='my-4'>
-        <Row className='d-flex justify-content-center'>
-          <Card className='shadow'>
-            <Card.Header className='text-center'>
-              Create New Question
-            </Card.Header>
-            <Card.Body>
-              <p>Complete the question:</p>
-              <h4>Would you rather...</h4>
-              <Form onSubmit={this.handleSubmit}>
-                <Form.Group>
-                  <Form.Control
-                    type='text'
-                    name='optionOneText'
-                    placeholder='Enter Option 1 Here'
-                    value={optionOneText}
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-                <p>OR</p>
-                <Form.Group>
-                  <Form.Control
-                    type='text'
-                    name='optionTwoText'
-                    placeholder='Enter Option 2 Here'
-                    value={optionTwoText}
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-                <Button
-                  block
-                  type='submit'
-                  disabled={optionOneText === '' || optionTwoText === ''}
-                >
-                  Submit
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
+      <Container className='d-flex justify-content-center'>
+        <Row className='my-4'>
+          <Col>
+            <Card className='shadow'>
+              <Card.Header className='text-center'>
+                Create New Question
+              </Card.Header>
+              <Card.Body>
+                <p>Complete the question:</p>
+                <h4>Would you rather...</h4>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Group>
+                    <Form.Control
+                      type='text'
+                      name='optionOneText'
+                      placeholder='Enter Option 1 Here'
+                      value={optionOneText}
+                      onChange={this.handleChange}
+                    />
+                  </Form.Group>
+                  <p>OR</p>
+                  <Form.Group>
+                    <Form.Control
+                      type='text'
+                      name='optionTwoText'
+                      placeholder='Enter Option 2 Here'
+                      value={optionTwoText}
+                      onChange={this.handleChange}
+                    />
+                  </Form.Group>
+                  <Button
+                    block
+                    type='submit'
+                    disabled={optionOneText === '' || optionTwoText === ''}
+                  >
+                    Submit
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
         </Row>
       </Container>
     );

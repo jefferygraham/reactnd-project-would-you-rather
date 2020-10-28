@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class Login extends Component {
   state = {
@@ -32,37 +33,42 @@ class Login extends Component {
     return (
       <Container className='d-flex justify-content-center align-items-center'>
         <Row className='my-4'>
-          <Card className='text-center shadow' style={{ width: '36rem' }}>
-            <Card.Header>
-              <h3>Welcome to the Would You Rather App!</h3>
-              <p>Please sign in to continue.</p>
-            </Card.Header>
-            <Card.Img variant='top' src='/assets/images/would-you-rather.jpg' />
-            <Card.Body>
-              <Card.Title>Sign In</Card.Title>
-              <Form onSubmit={this.handleSubmit}>
-                <Form.Group>
-                  <Form.Control
-                    as='select'
-                    onChange={this.handleChange}
-                    name='users'
-                    id='users'
-                    form='userform'
-                  >
-                    <option>SELECT A USER</option>
-                    {Object.keys(this.props.users).map((user) => (
-                      <option value={this.props.users[user].id} key={user}>
-                        {this.props.users[user].name}
-                      </option>
-                    ))}
-                  </Form.Control>
-                </Form.Group>
-                <Button type='submit' block>
-                  Sign In
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
+          <Col>
+            <Card className='text-center shadow'>
+              <Card.Header>
+                <h3>Welcome to the Would You Rather App!</h3>
+                <p>Please sign in to continue.</p>
+              </Card.Header>
+              <Card.Img
+                variant='top'
+                src='/assets/images/would-you-rather.jpg'
+              />
+              <Card.Body>
+                <Card.Title>Sign In</Card.Title>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Group>
+                    <Form.Control
+                      as='select'
+                      onChange={this.handleChange}
+                      name='users'
+                      id='users'
+                      form='userform'
+                    >
+                      <option>SELECT A USER</option>
+                      {Object.keys(this.props.users).map((user) => (
+                        <option value={this.props.users[user].id} key={user}>
+                          {this.props.users[user].name}
+                        </option>
+                      ))}
+                    </Form.Control>
+                  </Form.Group>
+                  <Button type='submit' block>
+                    Sign In
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
         </Row>
       </Container>
     );
